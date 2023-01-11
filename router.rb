@@ -15,7 +15,7 @@ class Router
   end
 
   # SECURITY ISSUE: command `curl localhost:2000/../server.rb --path-as-is`
-  # would send the server.rb file back to the client. 
+  # would send the server.rb file back to the client.
   def render(path)
     full_path = File.join(__dir__, "views", path)
     not_found_page_path = File.join(__dir__, "views", "404.html")

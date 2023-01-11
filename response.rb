@@ -4,7 +4,8 @@ class Response
     @body = body
   end
 
-  # can programmatically update content type depending on what body is being sent
+  # can programmatically update content type depending on what body is being
+  # sent
   def send(client)
     client.print("HTTP/1.1 #{code}\r\n")
     client.print("Content-Type: text/html\r\n")
