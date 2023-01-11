@@ -4,6 +4,9 @@ class Request
     @method, @path, _http_version = http_text_lines.first.split
     @path, @query = @path.split("?")
 
+    # Logging
+    puts "-> #{http_text_lines.first.chomp}"
+
     index = http_text_lines.index("\r\n")
     raw_headers = http_text_lines[1...index]
     @headers = parse_headers(raw_headers)

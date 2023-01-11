@@ -36,18 +36,14 @@ loop do
     # is there db actions to make
     # etc.
     # this is what Puma does with Rails
-    # it takes the request and hands it over to the rack application (our app) that Rails runs (in config.ru)
+    # it takes the request and hands it over to the rack application (our app) that Rails runs (via config.ru)
     request = Request.new(raw_http_data)
     # p request.inspect
     # p request.content_length
-
-    result = Router.new(request)
+    response = Router.new(request).route
 
     # sending a message back
-    client.print("HTTP/1.1 20 OK")
-    client.print("Content-Type: text/html\r\n")
-    client.print("\r\n")
-    client.print("Body content text, the time is #{Time.now}\r\n")
-    client.close
+    p "Sending response"
+    response.send(client)
   end
 end
