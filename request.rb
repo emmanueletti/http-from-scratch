@@ -14,11 +14,7 @@ class Request
     @body = http_text_lines[(index + 1)..].join
   end
 
-  def content_length
-    headers["content-length"].to_i
-  end
-
-  attr_reader :headers, :body, :path, :query
+  attr_reader :method, :headers, :path, :query, :body
 
   private
 
